@@ -31,6 +31,9 @@ function setCoreGetInputMock(obj) {
     if (options && options.required && !val) {
       throw new Error(createRequireErrorMessage(key));
     }
+    if (val === undefined) {
+      val = "";
+    }
     return val;
   });
 }
@@ -139,6 +142,10 @@ describe("Check returned substring", () => {
 
     setCoreGetInputMock({ value: "abc123", func_name: "substring", start: 2 });
     setCoreExpectedOutput({ result: "c123" });
+    stringsAction();
+
+    setCoreGetInputMock({ value: "v0.0.59+4", func_name: "substring", start: 1 });
+    setCoreExpectedOutput({ result: "0.0.59+4" });
     stringsAction();
   });
 
