@@ -8,22 +8,13 @@ function run() {
   try {
     let outputStr = null;
     if (func_name === "substring") {
-      const startStr = core.getInput("start", { required: false });
-      const endStr = core.getInput("end", { required: false });
-      console.log("startStr : " + startStr);
-      console.log("endStr : " + endStr);
-      if (startStr !== "" && endStr !== "") {
-        console.log("case 1");
-        const start = parseInt(startStr);
-        const end = parseInt(endStr);
+      const start = parseInt(core.getInput("start", { required: false }));
+      const end = parseInt(core.getInput("end", { required: false }));
+      if (!isNaN(start) && !isNaN(end)) {
         outputStr = value.substring(start, end);
-      } else if (endStr !== "") {
-        console.log("case 2");
-        const end = parseInt(endStr);
+      } else if (!isNaN(end)) {
         outputStr = value.substring(0, end);
-      } else if (startStr !== "") {
-        console.log("case 3");
-        const start = parseInt(startStr);
+      } else if (!isNaN(start)) {
         outputStr = value.substring(start, value.length);
       } else {
         throw "Invalid input for 'substring' function."
