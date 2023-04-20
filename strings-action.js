@@ -10,16 +10,16 @@ function run() {
     if (func_name === "substring") {
       const start = parseInt(core.getInput("start", { required: false }));
       const end = parseInt(core.getInput("end", { required: false }));
-      core.debug(`start: ${start}`);
-      core.debug(`end: ${start}`);
+      core.debug(`::debug::start: ${start}`);
+      core.debug(`::debug::end: ${start}`);
       if (!isNaN(start) && !isNaN(end)) {
-        core.debug("case 1");
+        core.debug("::debug::case 1");
         outputStr = value.substring(start, end);
       } else if (!isNaN(end)) {
-        core.debug("case 2");
+        core.debug("::debug::case 2");
         outputStr = value.substring(0, end);
       } else if (!isNaN(start)) {
-        core.debug("case 3");
+        core.debug("::debug::case 3");
         outputStr = value.substring(start, value.length);
       } else {
         throw "Invalid input for 'substring' function."
