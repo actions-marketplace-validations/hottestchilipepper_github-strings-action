@@ -10,14 +10,19 @@ function run() {
     if (func_name === "substring") {
       const startStr = core.getInput("start", { required: false });
       const endStr = core.getInput("end", { required: false });
+      console.log("startStr : " + startStr);
+      console.log("endStr : " + endStr);
       if (startStr !== "" && endStr !== "") {
+        console.log("case 1");
         const start = parseInt(startStr);
         const end = parseInt(endStr);
         outputStr = value.substring(start, end);
       } else if (endStr !== "") {
+        console.log("case 2");
         const end = parseInt(endStr);
         outputStr = value.substring(0, end);
       } else if (startStr !== "") {
+        console.log("case 3");
         const start = parseInt(startStr);
         outputStr = value.substring(start, value.length);
       } else {
